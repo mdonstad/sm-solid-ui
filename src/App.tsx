@@ -11,7 +11,7 @@ import Router from './cmp/Router/index';
 const [isReady, setReady] = createSignal(false);
 const App: Component = (props) => {
   const [appConfig,rd] = useAppConfig();
-  const cfg=appConfig();
+  const cfg=appConfig(); 
  // console.log("cfg",cfg)
   //doContent = createMemo(() => !isSplashShown());
   const isAuth=() => cfg.auth.isLoggedIn();
