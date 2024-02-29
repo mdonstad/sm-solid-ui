@@ -19,6 +19,7 @@
     "@shoelace-style/shoelace": "^2.14.0",
     "@solid-primitives/event-listener": "^2.3.2",
     "@solidjs/meta": "^0.29.3",
+    "rollup-plugin-copy": "^3.5.0",
     "solid-js": "^1.8.15",
     "solid-motionone": "^1.0.0"
   }

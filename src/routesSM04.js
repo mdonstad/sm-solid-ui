@@ -41,7 +41,6 @@ export const routes = [
       mod:['https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.14.0/cdn/components/radio-group/radio-group.js/+esm',
       'https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.14.0/cdn/components/radio-button/radio-button.js/+esm',
       'https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.14.0/cdn/components/input/input.js/+esm',
-      'https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.14.0/cdn/components/icon/icon.js/+esm',
     ]
     }
     

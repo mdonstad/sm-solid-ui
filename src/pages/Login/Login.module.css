@@ -2,13 +2,14 @@
 .Login {
     width:100%;
     max-width: var(--app-max-page-content-width);
+    --app-radio-size: calc(var(--app-max-page-content-width) / 2);
 }
 .Login sl-button {
     width:100%;
     margin-top:20px;
 }
 sl-radio-button {
-    width:calc(50dvw - var(--app-content-padding));
+    width:calc(var(--app-radio-size));
 }
 .LoginSMS {
    margin-top:50px; 

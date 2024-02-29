@@ -9,6 +9,8 @@ import {createSignal,Show,lazy} from "solid-js"
 //import CoreView from './views/core';
 import App from './App';
 //import Page from './cmp/Page/Page'
+
+
 const root = document.getElementById('root');
 import {loadm} from './scripts/util.js'
 if (import.meta.env.DEV && !(root instanceof HTMLElement)) {
