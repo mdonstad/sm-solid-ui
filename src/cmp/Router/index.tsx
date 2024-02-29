@@ -23,8 +23,9 @@ const isAuth=(r) => !r?.auth || (r?.auth && isLoggedIn && isLoggedIn());
 const findPage = (id) => pages.find((op) => op.id == id);
 let _popState=window.history.state;
 
-const addPageToDom = (r) => {
+const addPageToDom = (r:MapR|String) => {
    //console.log("addPageToDom",r)
+    if (r instanceof String) r=getRoute(r);
     if (r && !isActive(r)){
         if (isAuth(r)){
             if (r?.mod) loadMod(r);
@@ -46,8 +47,8 @@ const addPageToDom = (r) => {
         if (r && isActive(r)) return r;
     }
 }
-const preMod = (url:string) => {
-    const r=getRoute(url);
+const preMod = (r) => {
+    if (!isAuth(r)) return;
     if (r?.mod){
        if (!r?.preloaded){
             const mlist=r.mod;
@@ -111,6 +112,7 @@ const Router: Component<{isAuth:boolean}> = (props) => {
     const setPage = (url) => {
         if (!url) url=routeUrl();
         const r=getRoute(url);
+        preMod(r);
         let pageR=addPageToDom(r);
         if (pageR) return pageR;
         else{
