@@ -12,8 +12,7 @@ module.exports = {
                 themeDark: 'hsl(199.7 85.9% 47.7%)',
                 themeLight: 'hsl(198.6 88.7% 48.4%)',
                 color: 'hsl(199.7 85.9% 45.7%)',
-                stytchProjectID: import.meta.env.STYTCH_PROJECT_ID,
-                StytchToken: import.meta.env.STYTCH_PUBLIC_TOKEN
+               
             }
         });
     };
