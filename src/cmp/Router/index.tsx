@@ -18,7 +18,7 @@ const mapMod = new Map<string,string>();
 
 const addPage = (pg) => setPages([...pages, pg]);
 const getRoute=(url) => map.has(url) ? map.get(url) : null;
-const isActive = (r) => r.id === activeRoute()?.id;
+const isActive = (r) => r?.id === activeRoute()?.id;
 const isAuth=(r) => !r?.auth || (r?.auth && isLoggedIn && isLoggedIn());
 const findPage = (id) => pages.find((op) => op.id == id);
 let _popState=window.history.state;
@@ -49,7 +49,7 @@ const addPageToDom = (r:MapR|string) => {
     }
 }
 const preMod = (r) => {
-    if (!isAuth(r)) return;
+    if (r?.auth) return;
     if (r?.mod){
        if (!r?.preloaded){
             const mlist=r.mod;
