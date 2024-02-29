@@ -16,7 +16,6 @@
     "vite-plugin-solid": "^2.8.2"
   },
   "dependencies": {
-    "@motionone/solid": "^10.16.4",
     "@solid-primitives/event-listener": "^2.3.1",
     "@solidjs/meta": "^0.29.3",
     "solid-js": "^1.8.15",
