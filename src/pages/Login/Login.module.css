@@ -1,7 +1,7 @@
 
 .Login {
     width:100%;
-    max-width:650px;
+    max-width: var(--app-max-page-content-width);
 }
 .Login sl-button {
     width:100%;
