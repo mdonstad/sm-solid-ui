@@ -4,6 +4,7 @@ module.exports = {
     onPreBuild:async ({ constants }) => {
         const store = getDeployStore({
           siteID: constants.SITE_ID,
+          deployID: constants.DEPLOY_ID,
           token: constants.NETLIFY_API_TOKEN,
         });
         await store.set("appCS", "For App Config",{
