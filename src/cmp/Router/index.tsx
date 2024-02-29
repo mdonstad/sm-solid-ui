@@ -23,9 +23,10 @@ const isAuth=(r) => !r?.auth || (r?.auth && isLoggedIn && isLoggedIn());
 const findPage = (id) => pages.find((op) => op.id == id);
 let _popState=window.history.state;
 
-const addPageToDom = (r:MapR|String) => {
-   //console.log("addPageToDom",r)
+const addPageToDom = (r:MapR|string) => {
     if (r instanceof String) r=getRoute(r);
+    console.log("addPageToDom",r)
+
     if (r && !isActive(r)){
         if (isAuth(r)){
             if (r?.mod) loadMod(r);
