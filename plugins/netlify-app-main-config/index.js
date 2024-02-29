@@ -1,4 +1,4 @@
-    
+const { getDeployStore } = require("@netlify/blobs");
 module.exports = {
 
     onPreBuild:async ({ constants }) => {
