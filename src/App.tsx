@@ -10,6 +10,8 @@ import {loadm} from './scripts/util.js'
 //import { RouterProvider } from "./cmp/Router/RouterCtx";
 //import {routes} from './routesSM04.js'
 const [isReady, setReady] = createSignal(false);
+loadm("https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.14.0/cdn/components/card/card.js/+esm");
+
 const App: Component = (props) => {
   const [appConfig,rd] = useAppConfig();
   const cfg=appConfig(); 
@@ -17,7 +19,6 @@ const App: Component = (props) => {
   //doContent = createMemo(() => !isSplashShown());
   const isAuth=() => cfg.auth.isLoggedIn();
   //loadm("https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.14.0/cdn/shoelace-autoloader.min.js");
-  loadm("https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.14.0/cdn/components/card/card.js/+esm");
 
   return (
     <>
