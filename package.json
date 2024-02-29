@@ -1,7 +1,6 @@
 {
   "name": "smart-mixers",
   "version": "0.1.1",
-  "type": "module",
   "description": "",
   "scripts": {
     "start": "vite",
