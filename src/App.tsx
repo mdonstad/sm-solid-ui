@@ -5,6 +5,7 @@ import MainNav from './cmp/MainNavbar'
 import { useAppConfig } from "./lib/app";
 import Splash,{splashDone} from './cmp/Splash'
 import Router from './cmp/Router/index';
+import {loadm} from './scripts/util.js'
 
 //import { RouterProvider } from "./cmp/Router/RouterCtx";
 //import {routes} from './routesSM04.js'
@@ -15,9 +16,8 @@ const App: Component = (props) => {
  // console.log("cfg",cfg)
   //doContent = createMemo(() => !isSplashShown());
   const isAuth=() => cfg.auth.isLoggedIn();
-  const t=document.createElement('script');t.type="module";t.src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.14.0/cdn/components/spinner/spinner.js/+esm";document.body.append(t);
-  const t3=document.createElement('script');t3.type="module";t3.src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.14.0/cdn/components/button/button.js/+esm";document.body.append(t3);
-  const t2=document.createElement('script');t2.type="module";t2.src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.14.0/cdn/shoelace-autoloader.min.js";document.body.append(t2);
+  //loadm("https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.14.0/cdn/shoelace-autoloader.min.js");
+  loadm("https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.14.0/cdn/components/card/card.js/+esm");
 
   return (
     <>
