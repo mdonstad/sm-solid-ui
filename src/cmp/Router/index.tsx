@@ -23,17 +23,14 @@ const isAuth=(r) => !r?.auth || (r?.auth && isLoggedIn && isLoggedIn());
 const findPage = (id) => pages.find((op) => op.id == id);
 let _popState=window.history.state;
 
-const addPageToDom = (r:MapR|string) => {
-    if (r instanceof String) r=getRoute(r);
+const addPageToDom = (r:MapR) => {
     console.log("addPageToDom",r)
-
     if (r && !isActive(r)){
         if (isAuth(r)){
-            if (r?.mod) loadMod(r);
+            if (r?.mod) loadMod(r.path);
             let id=r.id;
             if (!r.id.startsWith('page-'))
                 id=`page-${r.id}`;
-
             let pageR=findPage(id);
             if (pageR == null) {
                 r.id=id;pageR=r;
@@ -48,8 +45,9 @@ const addPageToDom = (r:MapR|string) => {
         if (r && isActive(r)) return r;
     }
 }
-const preMod = (r) => {
-    if (r?.auth) return;
+const preMod = (u) => {
+    const r=getRoute(u);
+    if (!isAuth(r)) return;
     if (r?.mod){
        if (!r?.preloaded){
             const mlist=r.mod;
@@ -64,7 +62,8 @@ const preMod = (r) => {
        }
     }
 }
-const loadMod = (r) => {
+const loadMod = (u) => {
+    const r=getRoute(u);
     if (!r?.modloaded){
         const mlist=r.mod;
         for(let _=0;_<mlist.length;_++){
@@ -98,8 +97,7 @@ export const useRouter = () => {
         goBack: () => window.history.back(),
         navigate: navigateUrl,
         activeRoute,
-        preMod,
-        loadMod
+        preMod
     }
 };
 
@@ -113,7 +111,7 @@ const Router: Component<{isAuth:boolean}> = (props) => {
     const setPage = (url) => {
         if (!url) url=routeUrl();
         const r=getRoute(url);
-        preMod(r);
+        preMod(url);
         let pageR=addPageToDom(r);
         if (pageR) return pageR;
         else{
