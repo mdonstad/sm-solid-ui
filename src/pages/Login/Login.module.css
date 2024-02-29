@@ -9,7 +9,8 @@
     margin-top:20px;
 }
 sl-radio-button {
-    width:calc(var(--app-radio-size));
+    width: calc(50vw - var(--app-content-padding));
+    max-width:calc(var(--app-radio-size));
 }
 .LoginSMS {
    margin-top:50px; 
