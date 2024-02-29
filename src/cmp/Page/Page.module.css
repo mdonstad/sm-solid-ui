@@ -1,0 +1,63 @@
+.Page {
+    width:100vw;
+    height:100dvh;
+    position: absolute;
+    display:none;
+}
+.wrap {
+    min-height: 100dvh;
+    display: flex;
+}
+
+.active {
+    display:block;
+}
+.Page main {
+    margin-top:calc(var(--app-header-height) + 20px);
+    padding: 0 var(--app-content-padding) 0 var(--app-content-padding);
+}
+.content {
+    display: grid;
+    grid-template-columns: 100%;
+    gap: 2rem; 
+    max-width: var(--app-content-max-width);
+    margin:0 auto;
+}
+button[data-theme=light] .Icon svg {
+    color: var(--sl-color-amber-500);
+    --fa-secondary-color: var(--sl-color-amber-400);
+}
+
+.slide-page {
+    position: absolute;
+    transform: translateX(-100%);
+    -webkit-transform: translateX(-100%);
+}
+
+.slide-in {
+    animation: slide-in 0.5s forwards;
+    -webkit-animation: slide-in 0.5s forwards;
+}
+
+.slide-out {
+    animation: slide-out 0.5s forwards;
+    -webkit-animation: slide-out 0.5s forwards;
+}
+    
+@keyframes slide-in {
+    100% { transform: translateX(0%); }
+}
+
+@-webkit-keyframes slide-in {
+    100% { -webkit-transform: translateX(0%); }
+}
+    
+@keyframes slide-out {
+    0% { transform: translateX(0%); }
+    100% { transform: translateX(-100%); }
+}
+
+@-webkit-keyframes slide-out {
+    0% { -webkit-transform: translateX(0%); }
+    100% { -webkit-transform: translateX(-100%); }
+}

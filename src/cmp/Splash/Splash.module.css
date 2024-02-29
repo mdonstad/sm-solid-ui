@@ -1,0 +1,22 @@
+.Splash {
+    pointer-events:none;
+    text-align: center;
+    position:fixed;top:0;left:0;z-index:2110;
+  }
+  
+h1 span {color:var(--sl-color-primary-600);}
+  
+.header {
+    background-color: var(--app-background-color);
+    min-height: 100vh;
+    width:100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: var(--app-color)
+}
+
+  sl-spinner {
+    font-size:3.5rem;
+  }

@@ -1,0 +1,17 @@
+.LogoText {
+    display: inline-block;
+}
+h1 {
+    font-size:1.5rem;
+}
+.med {
+    font-size:2rem;
+}
+
+.lge {
+    font-size:3rem;
+}
+
+h1 span {
+    color: var(--app-color-primary);
+}

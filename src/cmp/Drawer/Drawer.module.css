@@ -1,0 +1,5 @@
+.Drawer{}
+.Drawer h1 span {
+    color:var(--sl-color-primary-600);
+    font-size:var(--app-content-heading-size);
+}

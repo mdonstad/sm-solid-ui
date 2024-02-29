@@ -1,0 +1,21 @@
+
+
+.Header {
+    height: var(--app-header-height);
+    width: 100%;
+    display:flex;align-items: center;flex-direction: row;justify-content: space-between;
+    position:fixed;top:0;left:0;transition:1s;z-index:10;
+    background: var(--app-panel-background);
+    padding: 0 var(--app-content-padding) 0 var(--app-content-padding);
+}
+
+.Header h3 span {
+    color:var(--sl-color-primary-600);
+    font-size:var(--app-content-heading-size);
+}
+
+.Header h4 span {
+    color:var(--sl-color-primary-600);
+    font-size:var(--app-content-heading-size);
+}
+

@@ -1,0 +1,47 @@
+.Icon {
+    display:inline-block;
+    width:auto;
+    height:auto;
+    box-sizing: content-box !important;
+    pointer-events:none; 
+}
+.Icon svg {
+    fill:currentColor;
+    display:block;
+    width:100%;
+    height:100%;
+}
+
+.IToolbar {
+    display: flex;
+    z-index:10;
+    border-bottom-left-radius: calc(var(--app-border-radius) * 2);
+    align-items: center;
+    justify-content: center;
+    height:100%;
+    
+}
+.IToolbar button,.IToolbar a {
+    flex: 0 0 auto;display: inline-flex;align-items: center;
+    width: auto;
+    height: auto;background:transparent; border:none; border-radius: var(--app-border-radius);
+    text-decoration: none;
+    padding: 0.5rem;margin:0;cursor: pointer;transition: 250ms scale ease;
+}
+
+.IToolbar a svg,.IToolbar button svg {
+    width: 1.3rem; height:1.3rem; color:var(--app-color-primary,'#000000')
+}
+a[data-theme=dark] .Icon svg {
+    color: var(--sl-color-amber-500);
+    --fa-secondary-color: var(--sl-color-amber-800);
+}
+button[data-theme=dark] .Icon svg {
+    color: var(--sl-color-amber-500);
+    --fa-secondary-color: var(--sl-color-amber-800);
+}
+button[data-theme=light] .Icon svg {
+    color: var(--sl-color-orange-300);
+    --fa-secondary-color: var(--sl-color-amber-600);
+}
+

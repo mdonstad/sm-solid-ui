@@ -1,0 +1,26 @@
+
+body {
+  /*font: 17px var(--sl-font-sans);*/
+  background: var(--app-background-color);height:100%;
+  transition: background 1s;
+  font: var(--app-font-size) var(--app-font);font-weight: var(--sl-font-weight-normal,400);margin: 0;padding:0;overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;-moz-osx-font-smoothing: grayscale;
+  color: var(--app-color); 
+}
+a {
+  color: var(--sl-color-primary-600);
+}
+
+main {
+  position:relative;padding: 0 var(--app-content-padding) 0 var(--app-content-padding);
+  margin:0;display:block; 
+  margin-top:calc(var(--app-header-height) + 20px);
+}
+sl-card sl-button {width:100%;}
+
+.sl-theme-dark,:host {
+  color-scheme: dark;
+}
+.sl-theme-light,:root {
+  color-scheme: light dark;
+}

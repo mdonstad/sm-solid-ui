@@ -1,0 +1,16 @@
+.sl-theme-dark .ButtonToggle {
+    z-index: 30;
+}
+    .ButtonToggle { display:flex;
+        border: none;
+        border-radius: 50%;
+        width:auto;height:auto;
+    background: inherit;
+    color:var(--sl-color-neutral-700);
+    padding:0;
+    cursor:pointer;
+    transition: 250ms scale ease, 250ms rotate ease;
+    
+    }
+    .ButtonToggle:hover{scale: 1.2}
+    .ButtonToggle svg { width:2rem; height:2rem}
