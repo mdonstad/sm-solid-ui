@@ -2,6 +2,8 @@ import type { Component } from 'solid-js';
 import styles from './Splash.module.css';
 import {Motion,Presence} from "solid-motionone";
 import {createSignal, Show} from "solid-js"
+import '@shoelace-style/shoelace/dist/components/spinner/spinner.js';
+
 //const [isSplashShown, setSplashShow] = createSignal(true)
 const [splashDone, hideSplash] = createSignal(false)
 const setSplashDuration = d => window.setTimeout(t=>hideSplash(true),d);
