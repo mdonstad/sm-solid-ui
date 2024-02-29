@@ -3,6 +3,7 @@ import { Component } from "solid-js";
 import Header from '../../cmp/Page/Header'
 import LogoText from '../../cmp/Misc/LogoText'
 import styles from './Login.module.css'
+import CenterWrap from '../../cmp/Misc/CenterWrap'
 import pageStyles from '../../cmp/Page/Page.module.css'
 
 import LoginSMS from './LoginSMS'
@@ -15,7 +16,7 @@ const Login: Component<{}> = (props) => {
     <>
     <Header><LogoText><span>Smart</span>Mixers</LogoText></Header>
     <main>
-        <div class={pageStyles.wrap}>
+        <CenterWrap>
             <div class={styles.Login}>
                 <sl-radio-group  size="medium" help-text="Select a login/signup method so we can locate or create a new account." name="slm" value="1">
                         <sl-radio-button class="login-choose-button" value="1">Sign in with Phone</sl-radio-button>
@@ -23,7 +24,7 @@ const Login: Component<{}> = (props) => {
                 </sl-radio-group>
                 <div class={styles.LoginSMS}><LoginSMS></LoginSMS></div>
             </div>
-        </div>
+        </CenterWrap>
     </main>
 </>)
 };

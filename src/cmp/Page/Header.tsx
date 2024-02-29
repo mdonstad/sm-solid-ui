@@ -1,6 +1,4 @@
 
-
-
 import { Component } from "solid-js";
 import styles from './Header.module.css';
 import {createSignal,Show} from "solid-js";
@@ -15,7 +13,7 @@ const closeMenu = () => {
     if (isMenuShown()) setMenuShow(false);
 }
 const Header: Component<{appMenu?:boolean,children?:any}> = ({appMenu=false,children}) => {
-  return <header class={styles.Header}>
+  return <header data-app-header class={styles.header}>
     <Show when={appMenu}>
         <div>
         <Toggle icon="bars" isShown={isMenuShown} 

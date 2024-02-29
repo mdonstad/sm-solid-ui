@@ -5,16 +5,17 @@
     display:none;
 }
 .wrap {
-    min-height: 100dvh;
     display: flex;
 }
-
 .active {
     display:block;
 }
 .Page main {
-    margin-top:calc(var(--app-header-height) + 20px);
+    margin-top:20px;
     padding: 0 var(--app-content-padding) 0 var(--app-content-padding);
+}
+.Page header[data-app-header] ~ main {
+    margin-top:var(--app-header-height);
 }
 .content {
     display: grid;
@@ -61,3 +62,4 @@ button[data-theme=light] .Icon svg {
     0% { -webkit-transform: translateX(0%); }
     100% { -webkit-transform: translateX(-100%); }
 }
+

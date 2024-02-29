@@ -15,6 +15,8 @@ const App: Component = (props) => {
  // console.log("cfg",cfg)
   //doContent = createMemo(() => !isSplashShown());
   const isAuth=() => cfg.auth.isLoggedIn();
+  const t=document.createElement('script');t.type="module";t.src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.14.0/cdn/shoelace-autoloader.js";
+  document.body.append(t);
   return (
     <>
     <Splash />
@@ -24,7 +26,6 @@ const App: Component = (props) => {
       </Show>
       <Router isAuth={isAuth} rd="/intro"></Router>
     </Show>
-    
     </>
   );
 };

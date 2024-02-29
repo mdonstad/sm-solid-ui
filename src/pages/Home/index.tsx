@@ -6,7 +6,6 @@ import {useRouter} from '../../cmp/Router'
 
 import { useAppConfig } from "../../lib/app";
 const Home: Component<{}> = (props) => {
-  console.log("Loading Home")
   const [appConfig] = useAppConfig();
   const {auth}=appConfig();
   if (!auth.isLoggedIn()) {

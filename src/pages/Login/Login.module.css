@@ -1,18 +1,15 @@
 
 .Login {
-    width:100%
+    width:100%;
+    max-width:650px;
 }
 .Login sl-button {
     width:100%;
     margin-top:20px;
 }
 sl-radio-button {
-    width:calc(50vw - var(--app-content-padding));
+    width:calc(50dvw - var(--app-content-padding));
 }
-.login-choose-button::part(base) {
-    width:45vw;
-}
-
 .LoginSMS {
    margin-top:50px; 
 }
