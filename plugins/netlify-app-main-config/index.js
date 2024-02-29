@@ -1,4 +1,7 @@
-    export const onPreBuild = async ({ constants }) => {
+    
+module.exports = {
+
+    onPreBuild:async ({ constants }) => {
         const store = getDeployStore({
           siteID: constants.SITE_ID,
           token: constants.NETLIFY_API_TOKEN,
@@ -14,3 +17,4 @@
             }
         });
     };
+}
