@@ -18,3 +18,10 @@
     font-size:var(--app-content-heading-size);
 }
 
+.header[data-nav-sticky] {
+    z-index: 2 !important;
+    position: sticky !important;
+    top: 0 !important;
+    -webkit-backdrop-filter:blur(1rem);
+    backdrop-filter: blur(1rem);
+}

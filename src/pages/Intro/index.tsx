@@ -15,7 +15,7 @@ const Intro: Component<{}> = (props) => {
     const r=useRouter();
     return(
         <>
-            <Header><LogoText><span>Smart</span>Mixers</LogoText></Header>
+            <Header sticky><LogoText><span>Smart</span>Mixers</LogoText></Header>
             <main>
             <CenterWrap>
                 <AvatarTina></AvatarTina>

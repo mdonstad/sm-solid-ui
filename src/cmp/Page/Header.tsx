@@ -12,8 +12,8 @@ const openMenu = () => setMenuShow(true);
 const closeMenu = () => {
     if (isMenuShown()) setMenuShow(false);
 }
-const Header: Component<{appMenu?:boolean,children?:any}> = ({appMenu=false,children}) => {
-  return <header data-app-header class={styles.header}>
+const Header: Component<{appMenu?:boolean,sticky?:boolean,children?:any}> = ({appMenu=false,sticky=false,children}) => {
+  return <header data-app-header data-nav-sticky={sticky ? '' : undefined} class={styles.header}>
     <Show when={appMenu}>
         <div>
         <Toggle icon="bars" isShown={isMenuShown} 
