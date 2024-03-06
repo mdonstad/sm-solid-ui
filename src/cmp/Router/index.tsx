@@ -20,14 +20,16 @@ const addPage = (pg) => setPages([...pages, pg]);
 const getRoute=(url) => map.has(url) ? map.get(url) : null;
 const isActive = (r) => r?.id === activeRoute()?.id;
 const isAuth=(r) => !r?.auth || (r?.auth && isLoggedIn && isLoggedIn());
+const isPreLoad=(r) => r?.mod && (r.mod?.length && r.mod?.preload == true);
 const findPage = (id) => pages.find((op) => op.id == id);
 let _popState=window.history.state;
 
 const addPageToDom = (r:MapR) => {
-    console.log("addPageToDom",r)
     if (r && !isActive(r)){
         if (isAuth(r)){
-            if (r?.mod) loadMod(r.path);
+            // Load any defined required modules if any
+            loadRouteMod(r);
+
             let id=r.id;
             if (!r.id.startsWith('page-'))
                 id=`page-${r.id}`;
@@ -45,41 +47,48 @@ const addPageToDom = (r:MapR) => {
         if (r && isActive(r)) return r;
     }
 }
-const preMod = (u) => {
-    const r=getRoute(u);
+
+// Preload any modules required by route.
+const preloadRouteMod = (r) => {
     if (!isAuth(r)) return;
     if (r?.mod){
-       if (!r?.preloaded){
+        if (!r?.preloaded){
             const mlist=r.mod;
             for(let _=0;_<mlist.length;_++){
-                const murl=mlist[_];
-                if (!mapMod.has(murl)){
-                    ploadm(murl);
-                    mapMod.set(murl,"0");
-                }
+                const m=mlist[_];
+                let url=m?.url || m;
+                if (!mapMod.has(url)){ploadm(url);mapMod.set(url,"0");}
             }
-           r.preloaded=true;
-       }
+            r.preloaded=true;
+        }
     }
 }
-const loadMod = (u) => {
-    const r=getRoute(u);
-    if (!r?.modloaded){
+// load any modules required by route
+const loadRouteMod = (r) => {
+    if (r?.mod && !r?.modloaded){
         const mlist=r.mod;
         for(let _=0;_<mlist.length;_++){
-            const murl=mlist[_];
-            if (!mapMod.has(murl)) mapMod.set(murl,'0');
-            if (mapMod.has(murl)){
-                const s=mapMod.get(murl);
+            const m=mlist[_];
+            let url=m?.url || m;
+            if (!mapMod.has(url)) mapMod.set(url,'0');
+            if (mapMod.has(url)){
+                const s=mapMod.get(url);
                 if (s == "0"){
-                    loadm(murl);
-                    mapMod.set(murl,"1");
+                    loadm(url);
+                    mapMod.set(url,"1");
                 }
             }
         }
         r.modloaded=true;
-        //  r.preloaded=true;
     }
+}
+const preMod = (u) => {
+    const r=getRoute(u);
+    if (r) return preloadRouteMod(r);
+}
+const loadMod = (u) => {
+    const r=getRoute(u);
+    if (r) return loadRouteMod(r);
 }
 const navigateUrl = (url,opt) => {
 let popState=_popState || window.history.state;
@@ -88,7 +97,6 @@ else window.history.pushState(popState, null, url);
 const r=getRoute(url);
 
 setRouteUrl(url);
-
 
 addPageToDom(r);
 }
@@ -111,7 +119,9 @@ const Router: Component<{isAuth:boolean}> = (props) => {
     const setPage = (url) => {
         if (!url) url=routeUrl();
         const r=getRoute(url);
-        preMod(url);
+        console.log("page route=",r)
+        if (isPreLoad(r)) preloadRouteMod(r);
+
         let pageR=addPageToDom(r);
         if (pageR) return pageR;
         else{
@@ -126,8 +136,9 @@ const Router: Component<{isAuth:boolean}> = (props) => {
 
     const __popstateListener = function (event) {
         const url=window.location.pathname;
-        console.log("popstate",event);_popState=event.state; setRouteUrl(url);
-        setPage();
+        console.log("popstate",event);_popState=event.state; 
+        setPage(url);
+        setRouteUrl(url);
     };
     function listen() {
         window.addEventListener('popstate', __popstateListener);
@@ -137,8 +148,7 @@ const Router: Component<{isAuth:boolean}> = (props) => {
   
     const setupRouter=() => { 
         setRouteUrl(window.location.pathname);
-        //window.history.replaceState(null, null, window.location.pathname);  
-        setPage();
+        setPage(window.location.pathname);
     }
     
     listen();

@@ -9,6 +9,7 @@ export function AppConfigProvider(props) {
       name:string;
       theme:string;
       hasNavBar:boolean;
+      slVersion:string;
       auth: {
         isLoggedIn:any,
         session: Object,
@@ -19,9 +20,10 @@ export function AppConfigProvider(props) {
   //  const [activeRoute,setRoute]=createSignal({});
     //const [activeRoute, setActiveRoute] = createSignal({});
     //const [pages,setPages] = createStore<Array<Component>>([]);
-    const initData:CSAppData={name: props.name || '',theme:props.theme || 'dark',hasNavBar:true,auth:{
-        isLoggedIn:loggedIn,session:session,user:null
+    const initData:CSAppData={name: props.name || '',slVersion:props.slVersion || '2.14.1',theme:props.theme || 'dark',hasNavBar:true,auth:{
+        isLoggedIn:loggedIn,session:session,user:null,
     },_formMap:new Map<string,Object>()};
+
     const [config,setConfig] = createSignal(initData),
       appConfig = [
         config,
@@ -30,11 +32,14 @@ export function AppConfigProvider(props) {
             return initData._formMap.has(id) ? initData._formMap.get(id) : null;
           },
           saveForm(id,obj) {
-            initData._formMap.set(id,obj);
+            const curF=getForm(id)||{};
+            initData._formMap.set(id,{...curF,...obj});
             setConfig(initData);
           },
           clearForm: (id) => { if (initData._formMap.has(id)) initData._formMap.delete(id); },
-          clearForms: (id) => initData._formMap.clear()
+          clearForms: (id) => initData._formMap.clear(),
+          getLocal: (id) => {const lsv=window?.localStorage.getItem(id); return lsv ? Json.parse(lsv) : null},
+          setLocal: (id,val) => {if (!val) val=''; window.localStorage.setItem(id,Json.stringify(val)) }
         }
       ];
   

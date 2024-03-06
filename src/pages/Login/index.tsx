@@ -1,28 +1,48 @@
 
-import { Component } from "solid-js";
+import { Component,createSignal,Show } from "solid-js";
 import Header from '../../cmp/Page/Header'
 import LogoText from '../../cmp/Misc/LogoText'
 import styles from './Login.module.css'
 import CenterWrap from '../../cmp/Misc/CenterWrap'
 import pageStyles from '../../cmp/Page/Page.module.css'
-
+import Form from '../../cmp/Form/Form'
 import LoginSMS from './LoginSMS'
-import {Motion} from "solid-motionone";
-//import Page from '../../cmp/Page/Page'
-
 const Login: Component<{}> = (props) => {
-    console.log("login",{props})
+    const [valid, setValid] = createSignal(false);
+    const [method, setMethod] = createSignal<string>("phone");
+    const [loading, setLoading] = createSignal(false);
+    const onSubmit = (e) => {
+        e.preventDefault();
+        const t=e.target;
+        
+        //if (el) el.checkValidity();
+        setLoading(true);
+        window.setTimeout(()=>{
+            setLoading(false);
+        },3000);
+    }
+    const clickChange = (e,show) => {
+        e.preventDefault();
+        usePhone(show);
+    }
     return (
     <>
     <Header><LogoText><span>Smart</span>Mixers</LogoText></Header>
     <main>
         <CenterWrap>
             <div class={styles.Login}>
-                <sl-radio-group  size="medium" help-text="Select a login/signup method so we can locate or create a new account." name="slm" value="1">
-                        <sl-radio-button class="login-choose-button" value="1">Sign in with Phone</sl-radio-button>
-                        <sl-radio-button class="login-choose-button" value="2">Sign in with Email</sl-radio-button>
-                </sl-radio-group>
-                <div class={styles.LoginSMS}><LoginSMS></LoginSMS></div>
+                <Form id="login-user" onSubmit={onSubmit}>
+                    <input type="hidden" name="method" value={method()} />
+                    <Show when={method() == 'phone'} fallback={
+                        <a href="#" onClick={(e) => clickChange(e,true)}><small>Use Mobile phone instead</small></a>
+                    }>
+                        <div class={styles.LoginSMS}>
+                            <LoginSMS></LoginSMS>
+                            <a href="#" onClick={(e) => clickChange(e,false)}><small>Use Email address instead</small></a>
+                        </div>
+                    </Show>
+                    <sl-button type="submit" variant={valid() ? "primary" : "neutral"} disabled={!valid() || loading()} loading={loading()}>Continue</sl-button>
+                </Form>
             </div>
         </CenterWrap>
     </main>

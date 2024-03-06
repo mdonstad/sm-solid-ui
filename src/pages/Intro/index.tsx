@@ -17,6 +17,9 @@ const Intro: Component<{}> = (props) => {
             <main>
             <CenterWrap>
                 <div class={styles.Intro}>
+                <sl-avatar label="Avatar with an image icon">
+  <sl-icon slot="icon" name="image"></sl-icon>
+</sl-avatar>
                     <sl-card >
                     <LogoText>Welcome to Smart Mixers!</LogoText>
                     <p>We bring a new and exciting twist to social and

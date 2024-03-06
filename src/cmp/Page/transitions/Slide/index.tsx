@@ -5,23 +5,7 @@ import { Component } from "solid-js";
 
 
 const SlideAnim: Component<{type:string,children?:any,show?:any}> = ({type,children,show}) => {
-    console.log("new SlideAnim",{type,show})
     const [isShown, setShow] = createSignal(show);
-    /*
-    useBeforeLeave((e: BeforeLeaveEventArgs) => {
-     console.log("slideAnim(),use before leave",e)
-       if (!e.defaultPrevented){
-           //let toUrl=e.to;
-        e.preventDefault();
-        setShow(false);
-       window.setTimeout(()=>{
-              setShow(true);
-              e.retry(true);
-
-           },200)
-        }
-   });
-   */
 
   let inFrom,inTo,outFrom,outTo;
   if (type == 'slideIn'){inFrom="100vw"; inTo=0;
@@ -29,11 +13,8 @@ const SlideAnim: Component<{type:string,children?:any,show?:any}> = ({type,child
     }
   onMount(()=>{
     console.log("new onMount SlideAnim",type)
-  
-    //setShow(true);
   })
 
-console.log("from",{inFrom,children,s:isShown()})
   return (
     <Presence exitBeforeEnter>
         <Show when={isShown()}>
