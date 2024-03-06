@@ -7,7 +7,9 @@ import CenterWrap from '../../cmp/Misc/CenterWrap'
 import pageStyles from '../../cmp/Page/Page.module.css'
 import Form from '../../cmp/Form/Form'
 import LoginSMS from './LoginSMS'
+import { useRouter } from "../../cmp/Router";
 const Login: Component<{}> = (props) => {
+    const r=useRouter();
     const [valid, setValid] = createSignal(false);
     const [method, setMethod] = createSignal<string>("phone");
     const [loading, setLoading] = createSignal(false);
@@ -27,7 +29,7 @@ const Login: Component<{}> = (props) => {
     }
     return (
     <>
-    <Header><LogoText><span>Smart</span>Mixers</LogoText></Header>
+    <Header><LogoText onClick={(e) => r.goBack()}><span>Smart</span>Mixers</LogoText></Header>
     <main>
         <CenterWrap>
             <div class={styles.Login}>

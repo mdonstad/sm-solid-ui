@@ -11,8 +11,6 @@ import { useRouter } from "../Router";
 const Page: Component<{name:string,children:any}> = ({name,children}) => {
     const {activeRoute}=useRouter();
     let active=activeRoute().id == name;
-
-    console.log("Page = ",{name,children,ar:active})
     return (
         <div data-id={name} class={styles.Page + " " + (activeRoute().id == name ? styles.active : '')} >
             <SlideAnim type={"slideIn"} show={activeRoute().id == name}>
