@@ -9,7 +9,7 @@ const RouteButton: Component<{href:string,variant?:string,size?:string,replaceHi
         if (beforeLoad) 
         window.setTimeout(()=>{
             beforeLoad(href);
-        },300);
+        },500);
         
     })
 return( 
