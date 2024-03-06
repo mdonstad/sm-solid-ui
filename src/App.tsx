@@ -24,10 +24,12 @@ loadSL(`https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@${cfg.slVersion}/c
     <>
     <Splash />
     <Show when={splashDone() == true}>
+      <div id="cs-content-root" class={styles.chide}>
       <Show when={cfg.hasNavBar && isAuth()}>
         <MainNav><span><h3><span>Smart</span>Mixers</h3></span></MainNav>
       </Show>
       <Router isAuth={isAuth} rd="/intro"></Router>
+      </div>
     </Show>
     </>
   );

@@ -92,7 +92,7 @@ const loadMod = (u) => {
 }
 const navigateUrl = (url,opt) => {
 let popState=_popState || window.history.state;
-if (opt?.replace) {console.log("replace,",url); window.history.replaceState(null, null, url);} 
+if (opt?.replace) {window.history.replaceState(null, null, url);} 
 else window.history.pushState(popState, null, url);  
 const r=getRoute(url);
 
@@ -105,7 +105,10 @@ export const useRouter = () => {
         goBack: () => window.history.back(),
         navigate: navigateUrl,
         activeRoute,
-        preMod
+        preload: (href) => {
+            const r=getRoute(href);
+            if (r && r.onBeforeLoad) r.onBeforeLoad();
+        } 
     }
 };
 
@@ -135,7 +138,7 @@ const Router: Component<{isAuth:boolean}> = (props) => {
 
     const __popstateListener = function (event) {
         const url=window.location.pathname;
-        console.log("popstate",event);_popState=event.state; 
+        //console.log("popstate",event);_popState=event.state; 
         setPage(url);
         setRouteUrl(url);
     };

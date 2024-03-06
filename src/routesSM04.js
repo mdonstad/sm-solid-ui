@@ -3,6 +3,9 @@ import { render } from "solid-js/web";
 
 import { lazy } from "solid-js";
 import IntroCmp from './pages/Intro'
+import {preloadCmp} from './cmpLoader'
+
+
 const HomeCmp=() => import("./pages/Home");
 //const IntroCmp=() => import("./pages/Intro/index");
 const AboutCmp=() => import("./pages/About");
@@ -24,25 +27,23 @@ export const routes = [
     {
       id:'intro',
       path: "/intro",
-      component: IntroCmp,
-      mod: [{preload:false,url:'https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.14.0/cdn/components/avatar/avatar/+esm'}],
+      component: IntroCmp
     },
     {
       id:'login',
       path: "/login",
       component: lazy(LoginCmp),
-      mod:['https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.14.0/cdn/components/radio-group/radio-group.js/+esm',
-      'https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.14.0/cdn/components/radio-button/radio-button.js/+esm',
-      'https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.14.0/cdn/components/input/input.js/+esm',
-      ]
+      onBeforeLoad: () => {
+        preloadCmp('sl-input');
+      }
     },
     {
       id:'login-email',
       path: "/login/email",
       component: lazy(LoginCmp),
-      mod:[
-      'https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.14.0/cdn/components/input/input.js/+esm'
-      ]
+      onBeforeLoad: () => {
+        preloadCmp('sl-input');
+      }
     }
     
 ];

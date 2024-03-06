@@ -2,7 +2,6 @@
 body {
   /*font: 17px var(--sl-font-sans);*/
   background: var(--app-background-color);height:100%;
-  transition: background 1s;
   font: var(--app-font-size) var(--app-font);font-weight: var(--sl-font-weight-normal,400);margin: 0;padding:0;overflow-x: hidden;
   -webkit-font-smoothing: antialiased;-moz-osx-font-smoothing: grayscale;
   color: var(--app-color); 
@@ -10,7 +9,10 @@ body {
 a {
   color: var(--sl-color-primary-600);
 }
-
+.ready {
+  opacity: 1 !important;
+  transition: .2s opacity;
+}
 main {
   position:relative;padding: 0 var(--app-content-padding) 0 var(--app-content-padding);
   margin:0;display:block; 

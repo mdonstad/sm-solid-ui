@@ -1,10 +1,15 @@
 .App {
   text-align: center;
 }
+.chide :not(:defined) {
+  visibility: hidden;
+}
+.chide {
+  opacity: 0;
+}
 
 .header {
   background-color: var(--app-background-color);
-  transition: 1s;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -14,11 +19,4 @@
   opacity:0;
 }
 
-.link {
-  color: var(--app-color-primary);
-}
 
-main {
-  position:relative;padding: 0 var(--app-content-padding) 0 var(--app-content-padding);
-  margin:0;margin-top:30px; display:block; 
-}

@@ -1,0 +1,16 @@
+sl-avatar {
+    --size: calc(50dvw - var(--app-content-padding));
+    margin-bottom:20px;
+}
+@media screen and (max-width: 325px){
+    /* some CSS here */
+    sl-avatar {
+        --size: 150px;
+    }
+}
+@media screen and (min-width: 700px){
+    /* some CSS here */
+    sl-avatar {
+        --size: calc(345px - var(--app-content-padding));
+    }
+}
