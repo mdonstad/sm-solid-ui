@@ -1,6 +1,6 @@
 import {ploadm} from './scripts/util.js'
 const cmpLibMap={
-    "sl": {name:'Shoelace',version: '2.14.0',url:'https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@VERSION/cdn/components/@cmp/@cmp/+esm'}
+    "sl": {name:'Shoelace',version: document.documentElement?.dataset.shoelaceVersion || '2.14.0',url:'https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@VERSION/cdn/components/@cmp/@cmp.js/+esm'}
 }
 const preLoadMap=new Map<string,boolean>();
 
@@ -27,12 +27,9 @@ async function discover(root) {
     if (rootTagName == null) void 0;
     const rootIsSupportedElement = tagSupported(rootTagName);
     const tags = [...root.querySelectorAll(":not(:defined)")].map((el) => el.tagName.toLowerCase()).filter((tag) => tagSupported(tag));
-    if (rootIsSupportedElement) {
-      tags.push(rootTagName);
-    }
+    if (rootIsSupportedElement) tags.push(rootTagName);
     const tagsToRegister = [...new Set(tags)];
     await Promise.allSettled(tagsToRegister.map((tagName) => register(tagName)));
-    console.log("end discover");
   }
   function getCompUrlByTag(tag:string) {
     const preIdx=tag.indexOf('-');

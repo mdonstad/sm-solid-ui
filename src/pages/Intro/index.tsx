@@ -23,15 +23,14 @@ const Intro: Component<{}> = (props) => {
             <main>
             <CenterWrap>
                 <div class={styles.Heading}><h2>Welcome!</h2>
-                <p class="line">
-                "A new and exciting twist to social<br/>and
-                        singles mixer events."
+                <p class={styles.line}>
+                Smart Mixers is a new twist to social<br/>and singles mixer events.
                 </p>
                 </div>
                 <div class={styles.Intro}>
-                    <p><Icon icon="calendar" width="20px" height="20px" color="lightblue" /><span>Exclusive singles and social events in Southern California.</span></p>
-                    <p><Icon icon="id-card" width="20px" height="20px" color="orange" /><span>Powerful Smart profile matching technology.</span></p>
-                    <p><Icon icon="circle-check" width="20px" height="20px" color="green" /><span>Free to get started.</span></p>
+                <p><Icon icon="id-card" width="32px" height="32px" color="orange" /><span>Powerful Smart profile technology for better user compatibility matching.</span></p>
+                    <p><Icon icon="calendar" width="32px" height="32px" color="lightblue" /><span>Exclusive monthly singles and social events in Southern California.</span></p>
+                    <p><Icon icon="circle-check" width="32px" height="32px" color="green" /><span>FREE to Signup!</span></p>
                 </div>
                 <Show when={!cfg.isMobile}>
                     <QRScan>
@@ -42,7 +41,7 @@ const Intro: Component<{}> = (props) => {
             </main>
             <Show when={cfg.isMobile}>
                 <Footer>
-                    <RouteButton href="/login">Continue with Login or Signup</RouteButton>
+                    <RouteButton href="/login">Continue</RouteButton>
                 </Footer>
             </Show>
            
