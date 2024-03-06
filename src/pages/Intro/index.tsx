@@ -22,7 +22,7 @@ const Intro: Component<{}> = (props) => {
                 <div class={styles.Intro}>
                     <p class={styles.Heading}><LogoText>Welcome to <span>Smart</span> Mixers!</LogoText></p>
                     <p>A new and exciting twist to social and
-                        <b>singles</b> mixer events.</p>
+                        singles mixer events.</p>
                     <p>My name is Tina, and I will be your virtual host throughout your journey in
                         meeting new people. Maybe even help you find that special someone, if thats you 
                         are looking for. 
