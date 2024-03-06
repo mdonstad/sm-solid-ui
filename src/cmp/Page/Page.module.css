@@ -18,6 +18,9 @@
 .Page header[data-app-header] ~ main {
     margin-top:var(--app-header-height);
 }
+.Page header[data-nav-sticky] ~ main {
+    margin-top:0 !important;
+}
 .content {
     display: grid;
     grid-template-columns: 100%;
