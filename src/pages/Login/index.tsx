@@ -1,12 +1,12 @@
 
 import { Component,createSignal,Show } from "solid-js";
 import Header from '../../cmp/Page/Header'
-import LogoText from '../../cmp/Misc/LogoText'
 import styles from './Login.module.css'
 import CenterWrap from '../../cmp/Misc/CenterWrap'
 import pageStyles from '../../cmp/Page/Page.module.css'
 import Form from '../../cmp/Form/Form'
 import LoginSMS from './LoginSMS'
+import Logo from '../../lib/logo'
 import { useRouter } from "../../cmp/Router";
 const Login: Component<{}> = (props) => {
     const r=useRouter();
@@ -16,8 +16,6 @@ const Login: Component<{}> = (props) => {
     const onSubmit = (e) => {
         e.preventDefault();
         const t=e.target;
-        
-        //if (el) el.checkValidity();
         setLoading(true);
         window.setTimeout(()=>{
             setLoading(false);
@@ -29,7 +27,7 @@ const Login: Component<{}> = (props) => {
     }
     return (
     <>
-    <Header><LogoText onClick={(e) => r.goBack()}><span>Smart</span>Mixers</LogoText></Header>
+    <Header><Logo></Logo></Header>
     <main>
         <CenterWrap>
             <div class={styles.Login}>

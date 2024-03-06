@@ -17,6 +17,8 @@ margin-top:20px;
 }
 p.line {
     color:var(--sl-color-primary-600);
+    font-size:1.3rem;
+
 }
 .Intro span {
     margin-left:20px;

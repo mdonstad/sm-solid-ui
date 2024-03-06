@@ -11,8 +11,6 @@ const LoginEmail: Component<{}> = (props) => {
     const onSubmit = (e) => {
         e.preventDefault();
         const t=e.target;
-        
-        //if (el) el.checkValidity();
         setLoading(true);
         window.setTimeout(()=>{
             setLoading(false);

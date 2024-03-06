@@ -1,11 +1,7 @@
 .M {
     white-space: normal;
-    margin-top:30px;
+    margin-top:15px;
     text-align:center;
 }
-sl-qr-code {
-    margin-bottom:30px;
-}
-sl-card {
-    width:100%;
-}
+sl-qr-code {margin-bottom:15px;}
+sl-card {width:100%;}

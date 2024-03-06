@@ -5,7 +5,7 @@ import CenterWrap from '../../cmp/Misc/CenterWrap'
 import Header from '../../cmp/Page/Header'
 import Footer from '../../cmp/Page/Footer'
 import styles from './Intro.module.css'
-import LogoText from '../../cmp/Misc/LogoText'
+import Logo from '../../lib/logo'
 import RouteButton from '../../cmp/Button/RouteButton'
 import Icon from '../../cmp/Icon/Icon'
 import QRScan from './mobile'
@@ -19,7 +19,7 @@ const Intro: Component<{}> = (props) => {
     const r=useRouter();
     return(
         <>
-            <Header sticky><LogoText ><span>Smart</span>Mixers</LogoText></Header>
+            <Header sticky><Logo></Logo></Header>
             <main>
             <CenterWrap>
                 <div class={styles.Heading}><h2>Welcome!</h2>
@@ -28,9 +28,11 @@ const Intro: Component<{}> = (props) => {
                 </p>
                 </div>
                 <div class={styles.Intro}>
-                <p><Icon icon="id-card" width="32px" height="32px" color="orange" /><span>Powerful Smart profile technology for better user compatibility matching.</span></p>
-                    <p><Icon icon="calendar" width="32px" height="32px" color="lightblue" /><span>Exclusive monthly singles and social events in Southern California.</span></p>
-                    <p><Icon icon="circle-check" width="32px" height="32px" color="green" /><span>FREE to Signup!</span></p>
+                <p><Icon icon="id-card" color="orange" /><span>Powerful Smart profile technology for better user compatibility matching.</span></p>
+                    <p><Icon icon="champagne-glasses" color="#E56E94" /><span>Check profiles and compatibility scores during the events. </span></p>
+                    <p><Icon icon="heart" color="red" /><span>Exchange private contact info with others at events with a simple tap.</span></p>
+                    <p><Icon icon="calendar" color="lightblue" /><span>Exclusive monthly singles and social events in Southern California.</span></p>
+                    <p><Icon icon="circle-check" color="green" /><span>FREE to Signup!</span></p>
                 </div>
                 <Show when={!cfg.isMobile}>
                     <QRScan>
@@ -41,7 +43,7 @@ const Intro: Component<{}> = (props) => {
             </main>
             <Show when={cfg.isMobile}>
                 <Footer>
-                    <RouteButton href="/login">Continue</RouteButton>
+                    <RouteButton href="/login" full>Continue</RouteButton>
                 </Footer>
             </Show>
            
