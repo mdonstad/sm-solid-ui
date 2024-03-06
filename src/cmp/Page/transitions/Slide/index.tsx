@@ -12,7 +12,6 @@ const SlideAnim: Component<{type:string,children?:any,show?:any}> = ({type,child
     }else if (type == 'slideOut'){outFrom=0; outTo="100vw";
     }
   onMount(()=>{
-    console.log("new onMount SlideAnim",type)
   })
 
   return (

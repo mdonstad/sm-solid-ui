@@ -119,7 +119,6 @@ const Router: Component<{isAuth:boolean}> = (props) => {
     const setPage = (url) => {
         if (!url) url=routeUrl();
         const r=getRoute(url);
-        console.log("page route=",r)
         if (isPreLoad(r)) preloadRouteMod(r);
 
         let pageR=addPageToDom(r);
