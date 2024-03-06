@@ -61,7 +61,7 @@ async function discover(root) {
   window.setTimeout(async()=>{
     await discover(document.body); const csContent=document.getElementById('cs-content-root');csContent?.classList?.add('ready');
     observer.observe(document.documentElement, { subtree: true, childList: true });
-  },1100);
+  },1400);
 
   export {
     discover, preloadCmp

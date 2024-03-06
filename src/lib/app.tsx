@@ -3,12 +3,14 @@ const AppContext = createContext();
 export function AppConfigProvider(props) {
     const [loggedIn, setLoggedIn] = createSignal(false);
     const [session, setSession] = createSignal();
+    const isMobile = 'ontouchstart' in window || navigator?.maxTouchPoints > 0;
 
     //const mapRoutes = new Map<string,MapR>(routes.map((obj) => [obj.path, obj]));
     type CSAppData= {
       name:string;
       theme:string;
       hasNavBar:boolean;
+      isMobile:boolean;
       slVersion:string;
       auth: {
         isLoggedIn:any,
@@ -20,7 +22,7 @@ export function AppConfigProvider(props) {
   //  const [activeRoute,setRoute]=createSignal({});
     //const [activeRoute, setActiveRoute] = createSignal({});
     //const [pages,setPages] = createStore<Array<Component>>([]);
-    const initData:CSAppData={name: props.name || '',slVersion:props.slVersion || '2.14.1',theme:props.theme || 'dark',hasNavBar:true,auth:{
+    const initData:CSAppData={name: props.name || '',isMobile,slVersion:props.slVersion || '2.14.1',theme:props.theme || 'dark',hasNavBar:true,auth:{
         isLoggedIn:loggedIn,session:session,user:null,
     },_formMap:new Map<string,Object>()};
 

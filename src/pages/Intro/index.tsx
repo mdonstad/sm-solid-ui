@@ -1,37 +1,52 @@
 
-import { Component } from "solid-js";
+import { Component,Show } from "solid-js";
 //import Page from '../../cmp/Page/Page'
 import CenterWrap from '../../cmp/Misc/CenterWrap'
 import Header from '../../cmp/Page/Header'
+import Footer from '../../cmp/Page/Footer'
 import styles from './Intro.module.css'
 import LogoText from '../../cmp/Misc/LogoText'
 import RouteButton from '../../cmp/Button/RouteButton'
-import AvatarTina from '../../cmp/Avatar/Tina'
+import Icon from '../../cmp/Icon/Icon'
+import QRScan from './mobile'
 
 import { useRouter } from "../../cmp/Router";
 //import { useNavigate } from "../../cmp/Router";
-
+import { useAppConfig } from "../../lib/app";
 const Intro: Component<{}> = (props) => {
+    const [appConfig] = useAppConfig();
+    const cfg=appConfig(); 
     const r=useRouter();
     return(
         <>
             <Header sticky><LogoText ><span>Smart</span>Mixers</LogoText></Header>
             <main>
             <CenterWrap>
-                <AvatarTina></AvatarTina>
-                <div class={styles.Intro}>
-                    <p class={styles.Heading}><LogoText>Welcome to <span>Smart</span> Mixers!</LogoText></p>
-                    <p>A new and exciting twist to social and
-                        singles mixer events.</p>
-                    <p>My name is Tina, and I will be your virtual host throughout your journey in
-                        meeting new people. Maybe even help you find that special someone, if thats you 
-                        are looking for. 
-                    </p>
+                <div class={styles.Heading}><h2>Welcome!</h2>
+                <p class="line">
+                "A new and exciting twist to social<br/>and
+                        singles mixer events."
+                </p>
                 </div>
-                <RouteButton href="/login">Continue with Login or Signup</RouteButton>
-
+                <div class={styles.Intro}>
+                    <p><Icon icon="calendar" width="20px" height="20px" color="lightblue" /><span>Exclusive singles and social events in Southern California.</span></p>
+                    <p><Icon icon="id-card" width="20px" height="20px" color="orange" /><span>Powerful Smart profile matching technology.</span></p>
+                    <p><Icon icon="circle-check" width="20px" height="20px" color="green" /><span>Free to get started.</span></p>
+                </div>
+                <Show when={!cfg.isMobile}>
+                    <QRScan>
+                        <small>Scan code with mobile device to get started.</small>
+                    </QRScan><br/><br/>
+                </Show>
             </CenterWrap>
             </main>
+            <Show when={cfg.isMobile}>
+                <Footer>
+                    <RouteButton href="/login">Continue with Login or Signup</RouteButton>
+                </Footer>
+            </Show>
+           
+
         </>
       )
 };

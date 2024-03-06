@@ -19,8 +19,8 @@ const SlideAnim: Component<{type:string,children?:any,show?:any}> = ({type,child
         <Show when={isShown()}>
             <Motion.div style={"position:absolute;height:100vh;width:100vw"}
             animate={{  x: [inFrom,inTo] }}
-        transition={{ duration: 0.5,ease: 'ease-in' }}
-        exit={{ transition: { direction: 'reverse',duration: 0.2,ease: 'ease-out'}}}>
+        transition={{ duration: 0.6,ease: 'ease-in' }}
+        exit={{ transition: { direction: 'reverse',duration: 0.3,ease: 'ease-out'}}}>
             {children}
             </Motion.div>
         </Show>

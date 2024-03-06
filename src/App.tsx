@@ -13,16 +13,16 @@ import {loadSL} from './scripts/util.js'
 const [isReady, setReady] = createSignal(false);
 
 const App: Component = (props) => {
+
+
   const [appConfig,rd] = useAppConfig();
   const cfg=appConfig(); 
 loadSL(`https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@${cfg.slVersion}/cdn/components/card/card.js`);
-
-  //doContent = createMemo(() => !isSplashShown());
   const isAuth=() => cfg.auth.isLoggedIn();
   //loadm("https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.14.0/cdn/shoelace-autoloader.min.js");
   return (
     <>
-    <Splash />
+    <Splash duration="1300" />
     <Show when={splashDone() == true}>
       <div id="cs-content-root" class={styles.chide}>
       <Show when={cfg.hasNavBar && isAuth()}>
