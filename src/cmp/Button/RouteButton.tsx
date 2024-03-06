@@ -6,7 +6,11 @@ const RouteButton: Component<{href:string,variant?:string,size?:string,children:
     const r=useRouter();
     onMount(()=>{
         const beforeLoad=r?.preload;
-        if (beforeLoad) beforeLoad(href);
+        if (beforeLoad) 
+        window.setTimeout(()=>{
+            beforeLoad(href);
+        },300);
+        
     })
 return( 
 <sl-button onClick={() => r.navigate(href,{ replace: true })} variant={variant} size={size}>{children}</sl-button>
