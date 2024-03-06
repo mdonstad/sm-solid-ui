@@ -7,7 +7,6 @@ h2 {
     white-space: normal;
     max-width:var(--app-max-page-content-width);
     min-width:300px;
-margin-top:20px;
 }
 .Intro p {
     display:flex;
@@ -17,7 +16,7 @@ margin-top:20px;
 }
 p.line {
     color:var(--sl-color-primary-600);
-    font-size:1.3rem;
+    font-size:1.2rem;
 
 }
 .Intro span {
@@ -25,7 +24,6 @@ p.line {
 }
 .Heading {
     text-align: center;
-    margin-bottom:15px;
 }
 .t {
     font-size:1.5rem;

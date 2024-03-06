@@ -13,7 +13,7 @@ const RouteButton: Component<{href:string,variant?:string,size?:string,replaceHi
         
     })
 return( 
-<sl-button style={full ? 'width:100%' : undefined} onClick={() => r.navigate(href,{ replace: replaceHistory })} variant={variant} size={size}>{children}</sl-button>
+<sl-button style={full ? 'width:var(--app-content-button-width)' : undefined} onClick={() => r.navigate(href,{ replace: replaceHistory })} variant={variant} size={size}>{children}</sl-button>
 )};
 
 export default RouteButton;

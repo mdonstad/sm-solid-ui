@@ -1,10 +1,15 @@
 
+:root {
+  --double-app-content-padding:calc((var(--app-content-padding) * 2));
+  --app-content-button-width:calc(100vw - var(--double-app-content-padding) );
+}
 body {
   /*font: 17px var(--sl-font-sans);*/
   background: var(--app-background-color);height:100%;
   font: var(--app-font-size) var(--app-font);font-weight: var(--sl-font-weight-normal,300);margin: 0;padding:0;overflow-x: hidden;
   -webkit-font-smoothing: antialiased;-moz-osx-font-smoothing: grayscale;
   color: var(--app-color); 
+
 }
 a {
   color: var(--sl-color-primary-600);
